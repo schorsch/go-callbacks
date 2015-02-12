@@ -16,6 +16,7 @@ type Callback struct {
 func (c *Callback) Call(params ...interface{}) (result []reflect.Value, err error) {
 	f := reflect.ValueOf(c.Method)
 	if len(params) != f.Type().NumIn() {
+		// TODO add method name and param numbers
 		fmt.Println("callback.Call: param error.")
 		err = errors.New("Callback Call: wrong number of params.")
 		return
@@ -46,8 +47,8 @@ type Callbacks []Callback
 func (c *Callbacks) CallbacksCall(name string, params ...interface{}) {
 	fmt.Println("callbacks call:", name)
 	for _, cb := range c.CallbacksFind(name) {
-		// TODO catch errors?
-		// TODO return values if any?
+		// TODO catch errors ary ?
+		// TODO return values ary if any?
 		cb.Call(params...)
 	}
 }

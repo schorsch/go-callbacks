@@ -1,11 +1,9 @@
 package callbacks_test
 
 import (
-//	"fmt"
-//	"strings"
-	"testing"
-
+	//	"fmt"
 	"github.com/schorsch/go-callbacks"
+	"testing"
 )
 
 // setup
@@ -43,7 +41,7 @@ func TestCallbacksCall_OnStruct(t *testing.T) {
 func TestCallbacksCall_OnInlineMethod(t *testing.T) {
 	counter := 0
 	//	simple func incrementing the counter by given value
-	inline_callback := func(incr int){
+	inline_callback := func(incr int) {
 		counter += incr
 	}
 	var cbs callbacks.Callbacks
