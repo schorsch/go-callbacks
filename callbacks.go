@@ -2,7 +2,7 @@ package callbacks
 
 import (
 	"errors"
-	"fmt"
+	"log"
 	"reflect"
 )
 
@@ -17,7 +17,7 @@ func (c *Callback) Call(params ...interface{}) (result []reflect.Value, err erro
 	f := reflect.ValueOf(c.Method)
 	if len(params) != f.Type().NumIn() {
 		// TODO add method name and param numbers
-		fmt.Println("callback.Call: param error.")
+		log.Println("ERROR: callback.Call parameter error.")
 		err = errors.New("Callback Call: wrong number of params.")
 		return
 	}
@@ -45,7 +45,7 @@ type Callbacks []Callback
 
 //CallbacksCall calls all callbacks in the list by the given name with the passed params
 func (c *Callbacks) CallbacksCall(name string, params ...interface{}) {
-	fmt.Println("callbacks call:", name)
+	log.Println("callbacks call:", name)
 	for _, cb := range c.CallbacksFind(name) {
 		// TODO catch errors ary ?
 		// TODO return values ary if any?
